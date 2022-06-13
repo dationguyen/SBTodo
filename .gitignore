@@ -1,0 +1,9 @@
+src/SBTodo.Core/obj/
+.vs/
+src/SBTodo.Droid/obj/
+src/SBTodo.iOS/bin/
+src/SBTodo.iOS/obj/
+test/SBTodo.Core.Test/bin/
+test/SBTodo.Core.Test/obj/
+src/SBTodo.Core/bin/
+src/SBTodo.Droid/Resources/Resource.Designer.cs

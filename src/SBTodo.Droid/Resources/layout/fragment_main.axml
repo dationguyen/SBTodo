@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/textInputTodoMsg"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btnAddTodo">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:MvxBind="Text ToDoInput" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:text="Add new Todo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAddTodo"
+        android:layout_marginRight="10dp"
+        app:MvxBind="Click AddTodoCommand"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/textInputTodoMsg"/>
+
+    <mvvmcross.platforms.android.binding.views.MvxListView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/listTodo"
+        android:layout_marginTop="20dp"
+        app:MvxBind="ItemsSource TodoCollection; ItemClick TodoItemClickedCommand"
+        app:MvxItemTemplate="@layout/todo_item_template"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/toggleCompleted"
+        app:layout_constraintTop_toBottomOf="@id/btnAddTodo"/>
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="Show Completed"
+        android:textOn="Hide Completed"
+        android:layout_marginRight="10dp"
+        android:id="@+id/toggleCompleted"
+        app:MvxBind="Checked ShowCompletedItem; Click ToggleShowCompletedCommand"
+        app:layout_constraintTop_toBottomOf="@id/listTodo"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+        android:text="Search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSearchTodo"
+        android:layout_marginRight="10dp"
+        app:MvxBind="Click SearchCommand"
+        app:layout_constraintTop_toBottomOf="@id/listTodo"
+        app:layout_constraintRight_toLeftOf="@id/toggleCompleted"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
